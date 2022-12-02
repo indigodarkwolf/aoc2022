@@ -3,8 +3,6 @@
 #include <string>
 #include <queue>
 
-std::priority_queue<int> calories_set;
-
 // Play values
 // Rock = 1
 // Paper = 2
