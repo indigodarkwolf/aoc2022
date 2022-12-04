@@ -46,4 +46,6 @@ int main()
 
 	std::cout << "RPS Score: " << rps_score << std::endl;
 	std::cout << "LDW Score: " << ldw_score << std::endl;
+
+	return 0;
 }

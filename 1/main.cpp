@@ -40,4 +40,6 @@ int main()
 		calories_set.pop();
 	}
 	std::cout << "Top 3 total: " << total << std::endl;
+
+	return 0;
 }
