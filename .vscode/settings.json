@@ -48,6 +48,14 @@
 		"xtr1common": "cpp",
 		"xutility": "cpp",
 		"algorithm": "cpp",
-		"functional": "cpp"
+		"functional": "cpp",
+		"deque": "cpp",
+		"list": "cpp",
+		"queue": "cpp",
+		"sstream": "cpp",
+		"stack": "cpp",
+		"unordered_map": "cpp",
+		"vector": "cpp",
+		"xhash": "cpp"
 	}
 }
