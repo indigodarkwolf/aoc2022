@@ -207,7 +207,7 @@ int main(int argc, char **argv)
 	uint32_t *gif_buffer = new uint32_t[size.x * size.y];
 	bool do_gif = GifBegin(&gif, "part1.gif", size.x, size.y, 1, 8, false);
 
-	auto draw_frame = [&](const std::list<grain *> &grains) {
+	auto draw_frame = [&](const std::list<grain *> &grains, bool) {
 		if(do_gif) {
 			memset(gif_buffer, 0xFF000000, sizeof(uint32_t) * size.x * size.y);
 			for(auto r : rock_map) {
@@ -233,7 +233,7 @@ int main(int argc, char **argv)
 		}
 	};
 
-	auto simulate = [&](std::function<bool(const point2 &)> blocked, std::function<bool(const point2 &)> stop_check, std::function<void(const std::list<grain *> &)> do_frame) -> int {
+	auto simulate = [&](std::function<bool(const point2 &)> blocked, std::function<bool(const point2 &)> stop_check, std::function<void(const std::list<grain *> &, bool)> do_frame) -> int {
 		sand_map.clear();
 
 		int sand_id = 0;
@@ -273,8 +273,12 @@ int main(int argc, char **argv)
 			}
 
 			if(do_frame != nullptr) {
-				do_frame(grains);
+				do_frame(grains, false);
 			}
+		}
+
+		if(do_frame != nullptr) {
+			do_frame(grains, true);
 		}
 
 		while(!grains.empty()) {
@@ -322,7 +326,14 @@ int main(int argc, char **argv)
 	gif_buffer = new uint32_t[size.x * size.y];
 	do_gif = GifBegin(&gif, "part2.gif", size.x, size.y, 1, 8, false);
 
-	auto draw_frame_floor = [&](const std::list<grain *> &grains) {
+	int gif_frame = 0;
+	auto draw_frame_floor = [&](const std::list<grain *> &grains, bool last_frame) {
+		if(((gif_frame % 10) != 0) && !last_frame) {
+			++gif_frame;
+			return;
+		}
+		++gif_frame;
+
 		memset(gif_buffer, 0xFF000000, sizeof(uint32_t) * size.x * size.y);
 		for(auto r : rock_map) {
 			point2 p = r - bb_min;
