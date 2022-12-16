@@ -59,6 +59,7 @@
 		"xhash": "cpp",
 		"map": "cpp",
 		"set": "cpp",
-		"xtree": "cpp"
+		"xtree": "cpp",
+		"bitset": "cpp"
 	}
 }
