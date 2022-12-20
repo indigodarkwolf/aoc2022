@@ -60,6 +60,15 @@
 		"map": "cpp",
 		"set": "cpp",
 		"xtree": "cpp",
-		"bitset": "cpp"
+		"bitset": "cpp",
+		"format": "cpp",
+		"array": "cpp",
+		"charconv": "cpp",
+		"locale": "cpp",
+		"xlocbuf": "cpp",
+		"xlocmes": "cpp",
+		"xlocmon": "cpp",
+		"xloctime": "cpp",
+		"iomanip": "cpp"
 	}
 }
